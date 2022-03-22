@@ -4,5 +4,5 @@
 
 | Name Surname (initials) | GUID                                     |
 | ----------------------- | ---------------------------------------- |
-| Radosław Moskal         | `{FD9D086C-532F-4AAC-BB99-69D7798837D8}` |
-| Jan Kowalski            | `{44FBFCF5-4430-4964-878D-1867DC679E0D}` |
+| Radosław Moskal         | `{9509780D-FD03-4667-8672-7A7BDB5F5139}` |
+| Karolina Leszczyńska    | `{2D1482DE-7BD6-42B6-8BB0-6196391FF58B}` |
