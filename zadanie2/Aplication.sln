@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Dane\Data.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{5C48E2F7-4175-4E14-912C-29C7781F6F75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicTest", "LogicTest\LogicTest.csproj", "{17F784D0-1706-4E58-B107-F4EDC9679A91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{07EC40AC-174A-4F4D-A075-AC873C017E24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07EC40AC-174A-4F4D-A075-AC873C017E24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07EC40AC-174A-4F4D-A075-AC873C017E24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17F784D0-1706-4E58-B107-F4EDC9679A91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17F784D0-1706-4E58-B107-F4EDC9679A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17F784D0-1706-4E58-B107-F4EDC9679A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17F784D0-1706-4E58-B107-F4EDC9679A91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
