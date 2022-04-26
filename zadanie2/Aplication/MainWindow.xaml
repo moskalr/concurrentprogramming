@@ -1,0 +1,45 @@
+﻿<Window x:Class="View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        ResizeMode="CanMinimize"
+        Height="500" Width="790"
+        Background="Moccasin">
+    
+    <Window.DataContext>
+        <vm:ViewModelWindow />
+    </Window.DataContext>
+    
+    <Canvas>
+        <TextBox
+            Background="Aquamarine" TextAlignment="Center" MaxLength="3" FontSize="18" Padding="0 5 0 0" TextWrapping="Wrap" Text="{Binding Ball_Number, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Height="43" Width="82" Canvas.Left="680" Canvas.Top="115" />
+
+        <Button Content="Start" Background="Green" VerticalAlignment="Center" Command="{Binding Start}" Height="43" Width="82" Canvas.Left="680" Canvas.Top="40" HorizontalAlignment="Center" />
+
+        <Rectangle Stroke="Black" StrokeThickness="3" Height="430" Width="650" Canvas.Left="10" Canvas.Top="10" />
+
+        <ItemsControl ItemsSource="{Binding Balls, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                    <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Ellipse Height="46" Width="46" StrokeThickness="2" Fill="Blue" Stroke="Black"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Canvas>
+</Window>
