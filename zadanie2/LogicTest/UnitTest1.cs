@@ -1,6 +1,5 @@
 using System;
 using System.Collections.ObjectModel;
-using System.Runtime.InteropServices;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Logic;
@@ -34,7 +33,7 @@ namespace LogicTest
             Moving_the_Balls balls = new Moving_the_Balls();
             balls_obs = balls.Create(1);
             Ball ball = new Ball(balls_obs[0].X, balls_obs[0].Y);
-            balls.Update(ball, 3, 5);
+            balls.Update(ball);
             Thread.Sleep(50);
             Assert.AreNotEqual(ball.X, balls_obs[0].X);
             Assert.AreNotEqual(ball.Y, balls_obs[0].Y);

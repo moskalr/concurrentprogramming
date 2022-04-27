@@ -19,8 +19,8 @@ namespace Logic
             double y;
             for (int i = 0; i < ball_number; i++)
             {
-                x = rand.Next(0, 604);
-                y = rand.Next(0, 384);
+                x = rand.Next(10, 604);
+                y = rand.Next(10, 384);
                 balls.Add(new Ball(x, y));
             }
             return balls;
@@ -39,17 +39,17 @@ namespace Logic
             for (var i = 0; i < balls.Count; i++)
             {
                 Ball ball = balls[i];
-                x = rand.Next(0, 604);
-                y = rand.Next(0, 384);
                 //wstrzymanie glownego watku
-                Thread.Sleep(4);
+                Thread.Sleep(6);
                 //kolejkuje określoną pracę do uruchomienia w puli wątków
-                tasks.Add(Task.Run(() => Update(ball, x, y)));
+                tasks.Add(Task.Run(() => Update(ball)));
             }
         }
         
-        public async void Update(Ball ball, double x_new, double y_new)
+        public async void Update(Ball ball)
         {
+            double x_new;
+            double y_new;
             double move_x;
             double move_y;
             double d;
@@ -57,6 +57,8 @@ namespace Logic
             double diffrence_y;
             double diffrence_x2;
             double diffrence_y2;
+            x_new = rand.Next(10, 604) + rand.NextDouble();
+            y_new = rand.Next(10, 384) + rand.NextDouble();
             while (true)
             {
                 diffrence_x = ball.X - x_new;
@@ -77,9 +79,8 @@ namespace Logic
                     ball.Y += move_y;
                 }
                 //nextDouble zwraca losową liczbę zmiennoprzecinkową
-               x_new = rand.Next(0, 604) + rand.NextDouble();
-               y_new = rand.Next(0, 384) + rand.NextDouble();
-                
+                x_new = rand.Next(10, 604) + rand.NextDouble();
+                y_new = rand.Next(10, 384) + rand.NextDouble();
             }
         }
 
