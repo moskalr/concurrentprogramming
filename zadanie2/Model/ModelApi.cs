@@ -17,6 +17,6 @@ namespace Model
     {
         private readonly Moving_the_Balls creator = new Moving_the_Balls();
         public override ObservableCollection<Ball> Balls(int ball_number) => creator.Create(ball_number);
-        public override void Start(IList balls) => creator.Start((ObservableCollection<Ball>)balls);
+        public override void Start(IList balls) => creator.Start();
     }
 }

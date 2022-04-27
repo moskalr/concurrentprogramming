@@ -9,11 +9,12 @@ namespace Logic
     public class Moving_the_Balls
     {
         Random rand = new Random();
-        private List<Task> tasks;
+        private List<Task> tasks= new List<Task>();
+        private ObservableCollection<Ball> balls = new ObservableCollection<Ball>();
         public ObservableCollection<Ball> Create(int ball_number)
         {
-            ObservableCollection<Ball> balls = new ObservableCollection<Ball>();
-            tasks = new List<Task>();
+            balls.Clear();
+            tasks.Clear();
             double x;
             double y;
             for (int i = 0; i < ball_number; i++)
@@ -24,7 +25,14 @@ namespace Logic
             }
             return balls;
         }
-        public void Start(ObservableCollection<Ball> balls)
+
+        public ObservableCollection<Ball> Balls => balls;
+        
+        public int Tasks
+        {
+            get => tasks.Count;
+        }
+        public void Start()
         {
             double x;
             double y;
@@ -69,8 +77,8 @@ namespace Logic
                     ball.Y += move_y;
                 }
                 //nextDouble zwraca losową liczbę zmiennoprzecinkową
-                x_new = rand.Next(0, 604) + rand.NextDouble();
-                y_new = rand.Next(0, 384) + rand.NextDouble();
+               x_new = rand.Next(0, 604) + rand.NextDouble();
+               y_new = rand.Next(0, 384) + rand.NextDouble();
                 
             }
         }
