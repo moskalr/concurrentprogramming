@@ -1,6 +1,6 @@
 ﻿namespace Data
 {
-    public class Data
+    public abstract class Data
     {
         //na razie pusta klassa
     }
