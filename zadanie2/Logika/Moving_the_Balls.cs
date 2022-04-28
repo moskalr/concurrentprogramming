@@ -3,15 +3,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections;
 
 namespace Logic
 {
-    public class Moving_the_Balls
+    public class Moving_the_Balls : LogicAPI
     {
         Random rand = new Random();
         private List<Task> tasks= new List<Task>();
         private ObservableCollection<Ball> balls = new ObservableCollection<Ball>();
-        public ObservableCollection<Ball> Create(int ball_number)
+
+        public override IList Create(int ball_number)
         {
             balls.Clear();
             tasks.Clear();
@@ -32,24 +34,24 @@ namespace Logic
         {
             get => tasks.Count;
         }
-        public void Start()
-        {
-            double x;
-            double y;
-            for (var i = 0; i < balls.Count; i++)
-            {
-                Ball ball = balls[i];
-                //wstrzymanie glownego watku
-                Thread.Sleep(6);
-                //kolejkuje określoną pracę do uruchomienia w puli wątków
-                tasks.Add(Task.Run(() => Update(ball)));
-            }
-        }
-        
-        public async void Update(Ball ball)
+        public override void Start()
         {
             double x_new;
             double y_new;
+            for (var i = 0; i < balls.Count; i++)
+            {
+                Ball ball = balls[i];
+                x_new = rand.Next(10, 604);
+                y_new = rand.Next(10, 384);
+                //wstrzymanie glownego watku
+                Thread.Sleep(6);
+                //kolejkuje określoną pracę do uruchomienia w puli wątków
+                tasks.Add(Task.Run(() => Update(ball, x_new, y_new)));
+            }
+        }
+        
+        public async void Update(Ball ball, double x_new, double y_new)
+        {
             double move_x;
             double move_y;
             double d;
@@ -57,8 +59,6 @@ namespace Logic
             double diffrence_y;
             double diffrence_x2;
             double diffrence_y2;
-            x_new = rand.Next(10, 604) + rand.NextDouble();
-            y_new = rand.Next(10, 384) + rand.NextDouble();
             while (true)
             {
                 diffrence_x = ball.X - x_new;
@@ -83,6 +83,5 @@ namespace Logic
                 y_new = rand.Next(10, 384) + rand.NextDouble();
             }
         }
-
     }
 }

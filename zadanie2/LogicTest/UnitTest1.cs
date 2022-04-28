@@ -28,15 +28,20 @@ namespace LogicTest
         [TestMethod]
         public void Test_Update()
         {
+            double x;
+            double y;
             Random rand = new Random();
+            Moving_the_Balls creator = new Moving_the_Balls();
             ObservableCollection<Ball> balls_obs = new ObservableCollection<Ball>();
-            Moving_the_Balls balls = new Moving_the_Balls();
-            balls_obs = balls.Create(1);
-            Ball ball = new Ball(balls_obs[0].X, balls_obs[0].Y);
-            balls.Update(ball);
+            Ball ball = new Ball();
+            x = rand.Next(10, 604);
+            y = rand.Next(10, 384);
+            balls_obs.Add(new Ball(x, y));
+            creator.Create(1);
+            creator.Update(ball, 10, 10);
             Thread.Sleep(50);
-            Assert.AreNotEqual(ball.X, balls_obs[0].X);
-            Assert.AreNotEqual(ball.Y, balls_obs[0].Y);
+            Assert.AreNotEqual(10, balls_obs[0].X);
+            Assert.AreNotEqual(10, balls_obs[0].Y);
         }
     }
 }

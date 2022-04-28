@@ -1,52 +1,55 @@
 ﻿using System.Collections;
 using System.Windows.Input;
-using Model;
+using ModelPresentation;
 
-namespace ViewModel
+namespace PresentationViewModel
 {
-    public class ViewModelWindow : ViewModel
-    {
-        private int ball_number;
-        private IList balls;
-        private readonly ModelApi modelapi;
-        
-        public ViewModelWindow() : this(ModelApi.CreateApi()) { }
-        public ViewModelWindow(ModelApi modelapi)
+        public class ViewModelWindow : ViewModel
         {
-            this.modelapi = modelapi;
-            Start = new RelayCommand(() => start());
-        }
-        public ICommand Start { get; set; }
+            private int _ballNumber;
+            private readonly Model _model;
+            private IList _balls;
 
-        public void start()
-        {
-            Balls = this.modelapi.Balls(ball_number);
-            this.modelapi.Start(Balls);
-        }
-        public int Ball_Number
-        {
-            get => ball_number;
-            set
+            public ViewModelWindow()
             {
-                if (value.Equals(ball_number))
-                    return;
-                if (value < 0)
-                    value = 0;
-                else if (value > 100)
-                    value = 100;
-                ball_number = value;
-                RaisePropertyChanged(nameof(ball_number));
+                _model = Model.CreateApi();
+                Start = new RelayCommand(StartAction);
             }
-        }
-        public IList Balls
-        {
-            get => this.balls;
-            set
+
+            private void StartAction(object obj)
             {
-                if (value.Equals(this.balls)) return;
-                this.balls = value;
-                RaisePropertyChanged(nameof(Balls));
+                Balls = _model.Balls(_ballNumber);
+                _model.Start(Balls);
+            }
+
+            public int BallNumber
+            {
+                get => _ballNumber;
+                set
+                {
+                    if (value.Equals(_ballNumber))
+                        return;
+                    if (value < 0)
+                        value = 0;
+                    if (value > 100)
+                        value = 100;
+                    _ballNumber = value;
+                    OnPropertyChanged(nameof(BallNumber));
+                }
+            }
+
+            public ICommand Start { get; set; }
+
+            public IList Balls
+            {
+                get => _balls;
+                set
+                {
+                    if (value.Equals(_balls))
+                        return;
+                    _balls = value;
+                    OnPropertyChanged(nameof(Balls));
+                }
             }
         }
     }
-}

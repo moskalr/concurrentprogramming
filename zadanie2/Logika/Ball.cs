@@ -7,17 +7,22 @@ namespace Logic
     {
         private double x;
         private double y;
-        
-        public event PropertyChangedEventHandler PropertyChanged;
-        
-        protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = null)
+
+        public event PropertyChangedEventHandler
+           PropertyChanged;
+
+        internal void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         public Ball(double x, double y)
         {
             this.x = x;
             this.y = y;
+        }
+
+        public Ball()
+        {
         }
 
         public double X
@@ -27,7 +32,7 @@ namespace Logic
             {
                 if (value.Equals(x)) return;
                 x = value;
-                RaisePropertyChanged(nameof(X));
+                OnPropertyChanged(nameof(X));
             }
         }
         public double Y
@@ -37,7 +42,7 @@ namespace Logic
             {
                 if (value.Equals(y)) return;
                 y = value;
-                RaisePropertyChanged(nameof(Y));
+                OnPropertyChanged(nameof(Y));
             }
         }
 
