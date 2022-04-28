@@ -22,7 +22,7 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Canvas>
-                        <Ellipse Stroke="Black" Fill="Red" Width="10" Height="10" Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}"/>
+                        <Ellipse Stroke="Black" Fill="Blue" Width="25" Height="25" Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}"/>
                     </Canvas>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
