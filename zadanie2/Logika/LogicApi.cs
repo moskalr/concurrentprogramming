@@ -18,7 +18,6 @@ namespace Logic
 
         public abstract double BoardHeight { get; }
     }
-
     internal class BallFactory : LogicAPI
     {
         private readonly DataAbstractApi _data;
@@ -54,7 +53,6 @@ namespace Logic
                 _data.GetBall(i).CreateMovementTask(10, cancellationToken);
         }
         
-
         public void PositionChange(object sender, PropertyChangedEventArgs args)
         {
             IBall ball = (IBall)sender;
