@@ -1,11 +1,12 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace PresentationViewModel
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class MainViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler
+        public event PropertyChangedEventHandler 
             PropertyChanged;
 
         internal void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -11,18 +11,16 @@
         Background="Moccasin">
 
     <Canvas>
-        <TextBox
-            Background="Aquamarine" TextAlignment="Center" MaxLength="3" FontSize="18" Padding="0 5 0 0" TextWrapping="Wrap" Text="{Binding BallNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Height="43" Width="82" Canvas.Left="680" Canvas.Top="115" />
+        <TextBox Background="Aquamarine" TextAlignment="Center" MaxLength="2" FontSize="18" Text="{Binding BallNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="25" Width="82" Canvas.Left="680" Canvas.Top="115" />
+        <Button Content="Start" Background="Green" VerticalAlignment="Center" Command="{Binding Start}" IsEnabled="{Binding IsStartEnable}" Height="43" Width="82" Canvas.Left="680" Canvas.Top="40" HorizontalAlignment="Center" />
 
-        <Button Content="Start" Background="Green" VerticalAlignment="Center" Command="{Binding Start}" Height="43" Width="82" Canvas.Left="680" Canvas.Top="40" HorizontalAlignment="Center" />
-
-        <Rectangle Stroke="Black" StrokeThickness="3" Height="430" Width="650" Canvas.Left="10" Canvas.Top="10" />
-
+        <Rectangle Stroke="Black" StrokeThickness="3" Height="430" Width="650" Canvas.Left="0" Canvas.Top="0" />
+    
         <ItemsControl Name="Balls" ItemsSource="{Binding Balls, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Canvas>
-                        <Ellipse Stroke="Black" Fill="Blue" Width="25" Height="25" Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}"/>
+                        <Ellipse Stroke="Black" Fill="Blue" Width="{Binding R}" Height="{Binding R}" Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}"/>
                     </Canvas>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
