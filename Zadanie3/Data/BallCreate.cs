@@ -4,18 +4,18 @@ using System.Text.Json;
 
 namespace Data
 {
-    public class BallOperations 
+    public class BallCreate 
     {
         private CancellationTokenSource? _tokenSource;
         private readonly List<Task> _tasks = new();
         private readonly object _lock = new();
-        public string JsonFilename { get; set; } = "../../../../../log.json";
-        Random rand = new Random();
-        public ObservableCollection<BallData> Balls { get; } = new();
-
         public static int BoardHeight => 430;
         public static int BoardWidth => 650;
         private static int Radius => 30;
+        public string JsonFilename { get; set; } = "../../../../../log.json";
+        
+        Random rand = new Random();
+        public ObservableCollection<Data> Balls { get; } = new();
 
         public void CreateBalls(int number)
         {
@@ -33,28 +33,16 @@ namespace Data
                     xSpeed = (float)(0.1 + rand.NextDouble());
                     ySpeed = (float)(0.1 + rand.NextDouble());
                     var velocity = new Vector2(xSpeed, ySpeed);
-                    Balls.Add(new BallData(x, y, Radius, 50,velocity));
+                    Balls.Add(new Data(x, y, Radius, 50,velocity));
                 }
             }
-            MoveBalls();
+            Move();
         }
         
-        public void StopBalls()
+         // CRITICAL SECTION
+         private void Move()
         {
-            if (_tokenSource is not {IsCancellationRequested: false}) return;
-            _tokenSource.Cancel();
-            Balls.Clear();
-            _tasks.Clear();
-        }
-
-        /**
-         * ================
-         * CRITICAL SECTION
-         * ================
-         */
-        private void MoveBalls()
-        {
-            // Update balls positions
+            // BallCollision
             foreach (var ball in Balls)
             {
                 _tasks.Add(Task.Run(async () =>
@@ -69,7 +57,7 @@ namespace Data
                 }, _tokenSource!.Token));
             }
             
-            // Write diagnostic data
+            // WallCollision
             _tasks.Add(Task.Run(async () =>
             {
                 lock (_lock)

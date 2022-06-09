@@ -9,8 +9,8 @@ public abstract class LogicAbstractApi
     public abstract void GenerateBalls(int ballsNumber);
 
     public abstract List<BallLogic> GetBalls();
-    public abstract int CanvasHeight { get; }
-    public abstract int CanvasWidth { get; }
+    public abstract int Canvas_Height { get; }
+    public abstract int Canvas_Width { get; }
 
     public static LogicAbstractApi CreateApi(DataAbstractApi dataAbstractApi = default!)
     {

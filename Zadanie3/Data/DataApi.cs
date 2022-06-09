@@ -4,15 +4,15 @@ namespace Data;
 
 public class DataApi : DataAbstractApi
 {
-    private BallOperations _ballOperations = new();
+    private BallCreate _ballCreate = new();
 
     public override void CreateBalls(int number)
     {
-        _ballOperations = new BallOperations();
-        _ballOperations.CreateBalls(number);
+        _ballCreate = new BallCreate();
+        _ballCreate.CreateBalls(number);
     }
-    public override ObservableCollection<BallData> GetBalls() => _ballOperations.Balls;
+    public override ObservableCollection<Data> GetBalls() => _ballCreate.Balls;
 
-    public override int Width => BallOperations.BoardWidth;
-    public override int Height => BallOperations.BoardHeight;
+    public override int Width => BallCreate.BoardWidth;
+    public override int Height => BallCreate.BoardHeight;
 }

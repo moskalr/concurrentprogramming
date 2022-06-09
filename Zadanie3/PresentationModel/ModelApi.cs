@@ -7,8 +7,8 @@ internal class ModelApi : ModelAbstractApi
 {
     private readonly LogicAbstractApi _logicAbstractApi;
     private readonly ObservableCollection<BallModel> _ballsModel = new();
-    public override int CanvasHeight => _logicAbstractApi.CanvasHeight;
-    public override int CanvasWidth => _logicAbstractApi.CanvasWidth;
+    public override int CanvasHeight => _logicAbstractApi.Canvas_Height;
+    public override int CanvasWidth => _logicAbstractApi.Canvas_Width;
     public override int ActualBallsNumber => _ballsModel.Count;
 
     public ModelApi(LogicAbstractApi logicAbstractApi)
